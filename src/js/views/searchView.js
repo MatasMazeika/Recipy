@@ -52,11 +52,10 @@ const renderRecipe = recipe => {
 const createButton = (page, type) => `
 
 <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
-    <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
     <svg class="search__icon">
         <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
     </svg>
-    
+    <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
 </button>
 
             <!--
@@ -96,11 +95,11 @@ const renderButtons = (page, numResults, resPerPage) => {
 }
 
 // Foreach cycle that inserts the recipies 30 times
-export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+export const renderResults = (recipies, page = 1, resPerPage = 10) => {
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
 
-    recipes.slice(start, end).forEach(renderRecipe);
+    recipies.slice(start, end).forEach(renderRecipe);
 
-    renderButtons(page, recipes.length, resPerPage);
+    renderButtons(page, recipies.length, resPerPage);
 };
